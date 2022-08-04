@@ -11,7 +11,7 @@ module.exports = new Command({
 	async run(args, client, message, prefix) {
 
 		const target = message.mentions.users.first() || message.author
-        const msg = message.guild.members.cache.get(target.id)
+		const msg = message.guild.members.cache.get(target.id)
 		const avatar = msg.avatar === null ? msg.user : msg
 
 		message.channel.send({
