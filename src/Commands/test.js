@@ -15,7 +15,10 @@ module.exports = new Command({
         const mention = message.mentions.users.first()
         if (!mention) return sendMessage(prefix + " " + this.param)
 
-        const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${message.author.displayAvatarURL({ extension: "png", size: 512 })}&user2=${mention.displayAvatarURL({ extension: "png", size: 512 })}`))
+        const user1 = message.author.displayAvatarURL({ extension: "png", size: 512 })
+        const user2 = mention.displayAvatarURL({ extension: "png", size: 512 })
+
+        const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${user1}&user2=${user2}`))
         const json = await res.json()
 
         const attachment = new AttachmentBuilder(json.message, { name: 'love.png' })
